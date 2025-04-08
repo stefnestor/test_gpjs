@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test vB</title>
+	<!-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico"> -->
+	<style>
+		#main {
+			position: absolute;
+			width: 750px;
+/*			padding: 25px;*/
+			margins: auto;
+			background-color: #000;
+			display: block;
+			z-index: -5;
+
+		}
+		#img_wrapper {
+			background-color: #fff;
+			position: relative;
+			left: 0px;
+			top: 0px;
+			 /*	static set manually based on actual background image */
+			width: 750px;
+			height: 357px;
+			margins: auto;
+			z-index: -2;
+		}
+		img {
+			position: absolute;
+/*			background-color: blue;*/
+			opacity:50%;
+		}
+		#bg {
+			z-index: -1;
+			width: 100%;
+		}
+		#pink {
+			z-index: 1;
+			left: 95px;
+			top: 78px;
+		}
+		#orange {
+			z-index: 1;
+			left: 325px;
+			top: 78px;
+		}
+		#yellow {
+			z-index: 1;
+			left: 555px;
+			top: 78px;
+		}
+		#arrow_l {
+			z-index: 2;
+			left: 201px;
+			top: 108px;
+		}
+		#arrow_r {
+			z-index: 2;
+			left: 432px;
+			top: 108px;
+		}
+		#page_content {
+			z-index: 3;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+
+<div id="main">
+	<div id="img_wrapper">
+		<img src="bg.png" alt="bg" id="bg">
+		<a href="#pink" onclick=" document.getElementById('page_content').innerHTML = ' <object type=\'text/html\' data=\'pages/pink.html\' ></object>' " ><img src="pink.png" alt="pink" id="pink"></a>
+		<a href="#orange" onclick="document.getElementById('page_content').innerHTML = 'orange'"><img src="orange.png" alt="orange" id="orange"></a>
+		<a href="#yellow" onclick="document.getElementById('page_content').innerHTML = 'yellow'"><img src="yellow.png" alt="yellow" id="yellow"></a>
+		<a href="#arrow_l" onclick="document.getElementById('page_content').innerHTML = 'arrow_l'"><img src="arrow_l.png" alt="arrow_l" id="arrow_l"></a>
+		<a href="#arrow_r" onclick="document.getElementById('page_content').innerHTML = 'arrow_r'"><img src="arrow_r.png" alt="arrow_r" id="arrow_r"></a>
+	</div>
+
+	<div id="page_content"></div>
+</div>
+
+<script>
+	// ONLY works on initial page load not after
+	hash = null
+	if(window.location.hash){
+	   hash = window.location.hash;
+	} else if (document.location.hash){
+	   hash = document.location.hash;
+	} else if (location.hash){
+	   hash = location.hash;
+	}
+	if(hash == '#pink'){
+		document.getElementById('page_content').innerHTML = ' <object type=\'text/html\' data=\'pages/'+hash.substring(1)+'.html\' ></object>';
+	}
+	else {
+		document.getElementById('page_content').innerHTML = 'build-out TODO on initial page load';
+	}
+	// 
+</script>
+
+</body>
+</html> 
